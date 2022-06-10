@@ -71,7 +71,7 @@ function addMeal(mealData, random = false) {
 
   const btn = meal.querySelector(".meal-body .fav-btn");
 
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click", (e) => {
     if (btn.classList.contains("active")) {
       removeMealLS(mealData.idMeal);
       btn.classList.remove("active");
@@ -80,6 +80,7 @@ function addMeal(mealData, random = false) {
       btn.classList.add("active");
     }
 
+    e.stopPropagation();
     fetchFavMeals();
   });
 
@@ -138,9 +139,10 @@ function addMealFav(mealData) {
 
   const btn = favMeal.querySelector(".clear");
 
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click", (e) => {
     removeMealLS(mealData.idMeal);
 
+    e.stopPropagation();
     fetchFavMeals();
   });
 
